@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Pers Solsken</string>
     <string name="action_settings">Inställningar</string>
+    <string name="action_map">Visa vald position</string>
+    <string name="action_share">Dela</string>
     <string name="detail_name">Detaljerad information</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Label for the location preference [CHAR LIMIT=30] -->
+    <string name="pref_location_title">Position</string>
+    <!-- Label for the unit preference [CHAR LIMIT=30] -->
+    <string name="pref_unit_title">Enhet</string>
 </resources>

@@ -1,7 +1,10 @@
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -15,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,12 +65,22 @@ public class ForecastFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast toast = Toast.makeText(getActivity(), forecastData.get(position), Toast.LENGTH_SHORT);
-                toast.show();
+                Intent showDetailsIntent = new Intent(getActivity(), DetailActivity.class);
+                showDetailsIntent.setAction(Intent.ACTION_SEND);
+                showDetailsIntent.putExtra(Intent.EXTRA_TEXT, forecastData.get(position));
+                showDetailsIntent.setType("text/plain");
+
+                startActivity(showDetailsIntent);
             }
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
     }
 
     @Override
@@ -80,12 +92,22 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            FetchWeatherTask task = new FetchWeatherTask("Linkoping,SE", 7);
-//            task.execute("http://api.openweathermap.org/data/2.5/forecast/daily?q=Linkoping,SE&appid=880337a45ff196d260358fe154a52c72&mode=json&units=metric&lang=sv&cnt=7");
-            task.execute();
+            updateWeather();
             return true;
         }
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void updateWeather() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String value = prefs.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+        FetchWeatherTask task = new FetchWeatherTask(value, 7);
+//            task.execute("http://api.openweathermap.org/data/2.5/forecast/daily?q=Linkoping,SE&appid=880337a45ff196d260358fe154a52c72&mode=json&units=metric&lang=sv&cnt=7");
+        task.execute();
     }
 
     private ArrayAdapter<String> createAdaptor() {
@@ -286,8 +308,8 @@ public class ForecastFragment extends Fragment {
                 // Temperatures are in a child object called "temp".  Try not to name variables
                 // "temp" when working with temperature.  It confuses everybody.
                 JSONObject temperatureObject = dayForecast.getJSONObject(OWM_TEMPERATURE);
-                double high = temperatureObject.getDouble(OWM_MAX);
-                double low = temperatureObject.getDouble(OWM_MIN);
+                double high = possibleImperialConversion(temperatureObject.getDouble(OWM_MAX));
+                double low = possibleImperialConversion(temperatureObject.getDouble(OWM_MIN));
 
                 highAndLow = formatHighLows(high, low);
                 resultStrs[i] = day + " - " + description + " - " + highAndLow;
@@ -295,6 +317,15 @@ public class ForecastFragment extends Fragment {
 
             return resultStrs;
 
+        }
+
+        private double possibleImperialConversion(double metricValue) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String unit = prefs.getString(getString(R.string.pref_unit_key), getString(R.string.pref_unit_default));
+            if (unit != null && unit.equals("imperial")) {
+                return metricValue * 9 / 5 + 32;
+            }
+            return metricValue;
         }
     }
 }

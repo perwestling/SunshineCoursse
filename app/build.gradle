@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.android.sunshine.app"
-        minSdkVersion 14
+        minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -29,4 +29,5 @@ dependencies {
     testCompile 'org.json:json:20140107'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:support-v4:23.0.1'
 }

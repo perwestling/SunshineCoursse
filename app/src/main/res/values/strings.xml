@@ -1,7 +1,28 @@
 <resources>
+    <string name="action_refresh" translatable="false">Refresh (Debug)</string>
+    <string name="hello_world" translatable="false">Hello World</string>
+
     <string name="app_name">Per\'s Sunshine</string>
     <string name="action_settings">Settings</string>
-    <string name="action_refresh" translatable="false">Refresh (Debug)</string>
+    <string name="action_map">Map preferred position</string>
+    <string name="action_share">Share</string>
     <string name="detail_name">Detailed information</string>
     <string name="title_activity_detail">Detail Activity</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Key name for storing location in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_location_key" translatable="false">location</string>
+    <!-- Default location for the location preference [CHAR LIMIT=NONE] -->
+    <string name="pref_location_default" translatable="false">Linkoping,SE</string>
+    <!-- Label for the location preference [CHAR LIMIT=30] -->
+    <string name="pref_location_title">Location</string>
+
+    <!-- Label for the unit preference [CHAR LIMIT=30] -->
+    <string name="pref_unit_title">Unit</string>
+    <!-- Key name for storing unit in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_unit_key" translatable="false">unit</string>
+    <!-- Default unit for the unit preference [CHAR LIMIT=NONE] -->
+    <string name="pref_unit_default" translateble="false">metric</string>
 </resources>
