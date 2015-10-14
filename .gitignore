@@ -14,6 +14,9 @@ gen/
 
 # Gradle files
 .gradle/
+gradle/
+gradle*
+*.gradle
 build/
 /*/build/
 
@@ -25,3 +28,7 @@ proguard/
 
 # Log Files
 *.log
+
+# Android Studio
+local.properties
+.idea/
