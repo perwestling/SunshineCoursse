@@ -24,5 +24,5 @@
     <!-- Key name for storing unit in SharedPreferences [CHAR LIMIT=NONE] -->
     <string name="pref_unit_key" translatable="false">unit</string>
     <!-- Default unit for the unit preference [CHAR LIMIT=NONE] -->
-    <string name="pref_unit_default" translateble="false">metric</string>
+    <string name="pref_unit_default" translatable="false">metric</string>
 </resources>

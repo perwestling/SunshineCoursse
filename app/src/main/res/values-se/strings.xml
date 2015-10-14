@@ -4,6 +4,8 @@
     <string name="action_map">Visa vald position</string>
     <string name="action_share">Dela</string>
     <string name="detail_name">Detaljerad information</string>
+    <string name="title_activity_detail">Detaljerad vy</string>
+    <string name="title_activity_settings">Inställningar</string>
 
     <!-- Strings related to Settings -->
 
