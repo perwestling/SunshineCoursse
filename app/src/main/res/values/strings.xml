@@ -20,9 +20,11 @@
     <string name="pref_location_title">Location</string>
 
     <!-- Label for the unit preference [CHAR LIMIT=30] -->
-    <string name="pref_unit_title">Unit</string>
+    <string name="pref_units_title">Unit</string>
     <!-- Key name for storing unit in SharedPreferences [CHAR LIMIT=NONE] -->
-    <string name="pref_unit_key" translatable="false">unit</string>
+    <string name="pref_units_key" translatable="false">unit</string>
     <!-- Default unit for the unit preference [CHAR LIMIT=NONE] -->
-    <string name="pref_unit_default" translatable="false">metric</string>
+    <string name="pref_units_default" translatable="false">metric</string>
+    <string name="pref_units_metric">Metric</string>
+    <string name="pref_units_imperial">Imperial</string>
 </resources>

@@ -12,5 +12,7 @@
     <!-- Label for the location preference [CHAR LIMIT=30] -->
     <string name="pref_location_title">Position</string>
     <!-- Label for the unit preference [CHAR LIMIT=30] -->
-    <string name="pref_unit_title">Enhet</string>
+    <string name="pref_units_title">Enhet</string>
+    <string name="pref_units_metric">Metriska</string>
+    <string name="pref_units_imperial">Imperiska</string>
 </resources>

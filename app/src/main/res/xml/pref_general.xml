@@ -9,10 +9,10 @@
         android:maxLines="1" />
 
     <ListPreference
-        android:title="@string/pref_unit_title"
-        android:key="@string/pref_unit_key"
-        android:defaultValue="@string/pref_unit_default"
-        android:entries="@array/pref_unit_entries"
-        android:entryValues="@array/pref_unit_entry_values" />
+        android:title="@string/pref_units_title"
+        android:key="@string/pref_units_key"
+        android:defaultValue="@string/pref_units_default"
+        android:entries="@array/pref_units_entries"
+        android:entryValues="@array/pref_units_entry_values" />
 
 </PreferenceScreen>
